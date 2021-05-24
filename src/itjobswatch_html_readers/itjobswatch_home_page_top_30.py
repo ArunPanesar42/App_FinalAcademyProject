@@ -7,7 +7,7 @@ class ItJobsWatchHomePageTop30:
 
     def __init__(self, file_or_url_address):
         self._html_manager = HttpManager(file_or_url_address)
-        self.home_page_html = BeautifulSoup(self._html_manager.html, 'html.parser')
+        self.home_page_html = BeautifulSoup(self._html_manager.html, 'lxml')
 
     def _get_top_30_table(self):
         return self.home_page_html.find('table', class_="results")
@@ -20,7 +20,8 @@ class ItJobsWatchHomePageTop30:
 
         for item in self._get_top_30_table_headers().find_all('th'):
             table_headers_list.append(item.text)
-        table_headers_list.pop(0)
+        # Run this for test, but remove for live
+        #table_headers_list.pop(0)
 
         return table_headers_list
 
