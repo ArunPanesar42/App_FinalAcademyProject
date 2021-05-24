@@ -51,6 +51,8 @@ class CmdUserInterface:
         elif option_selected == '':
             self.manage_get_ITJW_top_30_menu()
         elif int(option_selected) == 1:
+            print("FLAG")
+            print(ItJobsWatchHomePageTop30(itjobswatch_home_page_url()).get_top_30_table_elements_into_array())
             Top30CSVGenerator().generate_top_30_csv(ItJobsWatchHomePageTop30(itjobswatch_home_page_url()).get_top_30_table_elements_into_array())
             print('Please check your downloads folder')
             self.manage_get_ITJW_top_30_menu()
