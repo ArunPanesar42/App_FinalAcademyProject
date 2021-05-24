@@ -164,7 +164,7 @@ All test are successfully in test environment.
 
 - Open the terminal and run `python -m pytest tests/ -v` to run the tests on live environment.
 
-## Step 6: Start fixing the tests on live environment.
+## Step 6: Start fixing the tests on live environment
 
 - We are going to start to fix the errors, but for this we have three different `.py` files that are checking that everything works correctly in different parts of the code. These three files are the same that we have used previously in the environment test. The three files are:
 
@@ -179,3 +179,35 @@ All test are successfully in test environment.
 ![TDD_LIVE](./photos_tdd/tdd_live.png)
 
 As we can see we have 4 tests that have passed and 6 that have failed. Therefore we proceed to correct the tests one by one.
+
+__Let's start with the error TestHttpManager.test_html_manager_returns_html_from_url:__
+
+The error looks like:
+
+![TEST_LIVE_1](./photos_tdd/test_live_manager.png)
+
+The problem is that there is some inconsistency when it tries to compare two strings which does not match.
+
+- Open `test_html_object_manager.py` and ensure `Job Market` is capitilized as this is the way it is in the site html in the line 27. It looks like:
+
+![TEST_LIVE_DONE_1](./photos_tdd/test_live_manager_done.png)
+
+- If we re-run the tests, `python -m pytest tests/ -v`, you will see that the failures have decreased from 6 to 5. With which we have turned out to be one more problem. We proceed to refactor and solve the next test problem.
+
+__Next error, TestTop30HtmlReader.test_table_headers_are_returned:__
+
+The error looks like:
+
+![TEST_LIVE_2](./photos_tdd/test_live_2_problem.png)
+
+- Regarding this bug and the rest of the bugs we have realized that the html parse is not working correctly, so we have proceeded to exchange some requirements:
+
+1. Error from BeautifulSoup, using `lxml==4.6.3` in requirements file instead, adding to requirements and replacing `html.parser` with `lxml`. Modify `itjobswatch_home_page_top_30.py`. It looks like:
+
+![TEST_LIVE_2](./photos_tdd/test_live_lxml.png)
+
+After that you will need to re-install the requirements for the modifications, `pip install -r requirements.txt`.
+
+2. Test data has an additional heading that isn't needed, whereas the live data does not have this. `table_headers_list.pop(0)` is used to remove the unneeded heading, commented out for the live version, in the line 24 in `itjobswatch_home_page_top_30.py`.
+
+- If we re-run the tests, `python -m pytest tests/ -v`, you will see that the failures have decreased from 5 to 4. With which we have turned out to be one more problem. We proceed to refactor and solve the next test problem.

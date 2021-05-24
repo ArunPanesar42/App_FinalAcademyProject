@@ -21,7 +21,7 @@ class ItJobsWatchHomePageTop30:
         for item in self._get_top_30_table_headers().find_all('th'):
             table_headers_list.append(item.text)
         # Run this for test, but remove for live
-        table_headers_list.pop(0)
+        #table_headers_list.pop(0)
 
         return table_headers_list
 
