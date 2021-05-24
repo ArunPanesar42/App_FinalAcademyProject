@@ -38,7 +38,6 @@ class ItJobsWatchHomePageTop30:
         return job_list
 
 
-
 if __name__ == '__main__':
     print(ItJobsWatchHomePageTop30(itjobswatch_home_page_test_file()))
 
