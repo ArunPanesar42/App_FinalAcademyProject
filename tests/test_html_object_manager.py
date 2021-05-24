@@ -24,5 +24,5 @@ class TestHttpManager:
         assert HttpManager.url_response.status_code == 200
 
     def test_html_manager_returns_html_from_url(self, HttpManager):
-        assert 'Tracking the IT job market' in HttpManager.html
+        assert 'Tracking the IT Job Market' in HttpManager.html
 
