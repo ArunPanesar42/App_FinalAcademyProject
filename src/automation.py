@@ -26,7 +26,10 @@ class Automation:
 
     def upload_s3(self):
         region = "eu-west-1"
-        file = open(os.getcwd()+"\credentials.cfg", "r")
+        ## Windows
+        #file = open(os.getcwd()+"\credentials.cfg", "r")
+        ## For Linux
+        file = open(os.getcwd() + "/credentials.cfg", "r")
         awsKey = file.readline().strip("\n")
         secretKey = file.readline().strip("\n")
 
