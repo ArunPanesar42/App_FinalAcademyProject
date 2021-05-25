@@ -3,6 +3,7 @@ from src.itjobswatch_html_readers.itjobswatch_home_page_top_30 import ItJobsWatc
 from src.csv_generators.top_30_csv_generator import Top30CSVGenerator
 import os
 
+
 class CmdUserInterface:
 
     def __init__(self):
@@ -45,7 +46,6 @@ class CmdUserInterface:
         print('Please select option:\n')
         option_selected = input()
 
-
         if option_selected.lower() == 'exit':
             exit()
         elif option_selected == '':
@@ -62,8 +62,6 @@ class CmdUserInterface:
         else:
             print('Please select an option from the menu or type exit')
             self.manage_get_ITJW_top_30_menu()
-
-
 
 
 if __name__ == '__main__':
