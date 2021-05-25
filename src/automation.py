@@ -13,7 +13,7 @@ class Automation:
         # Comment one of these out depending on if headings are wanted
         self.run_automation_head_none()
         #self.run_automation_head()
-        #self.upload_s3()
+        self.upload_s3()
 
     def run_automation_head_none(self):
         Top30CSVGenerator().generate_top_30_csv(ItJobsWatchHomePageTop30(itjobswatch_home_page_url()).get_top_30_table_elements_into_array())
