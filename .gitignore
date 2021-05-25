@@ -3,4 +3,4 @@
 .idea
 .pytest_cache
 __pycache__/
-src/credentials.cfg
+credentials.cfg

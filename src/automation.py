@@ -11,8 +11,8 @@ class Automation:
 
     def __init__(self):
         # Comment one of these out depending on if headings are wanted
-        #self.run_automation_head_none()
-        self.run_automation_head()
+        self.run_automation_head_none()
+        #self.run_automation_head()
         self.upload_s3()
 
     def run_automation_head_none(self):
@@ -26,7 +26,7 @@ class Automation:
 
     def upload_s3(self):
         region = "eu-west-1"
-        file = open("credentials.cfg")
+        file = open(os.getcwd()+"\credentials.cfg", "r")
         awsKey = file.readline().strip("\n")
         secretKey = file.readline().strip("\n")
 
