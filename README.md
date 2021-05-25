@@ -43,7 +43,7 @@ Follow the instructions to download via the various options given.
 * create a connected database for full deployment
 * Build a scheduler as part of a full deployment to poll and add to the database 
 
-# Testing App - Test Driven Development
+# Testing App - Test Driven Development (TDD)
 
 __Team members:__
 
@@ -178,7 +178,7 @@ All test are successfully in test environment.
 
 ![TDD_LIVE](./photos_tdd/tdd_live.png)
 
-As we can see we have 4 tests that have passed and 6 that have failed. Therefore we proceed to correct the tests one by one.
+As we can see we have 4 tests that have passed and 6 that have failed. Therefore, we proceed to correct the tests one by one.
 
 __Let's start with the error TestHttpManager.test_html_manager_returns_html_from_url:__
 
@@ -211,3 +211,43 @@ After that you will need to re-install the requirements for the modifications, `
 2. Test data has an additional heading that isn't needed, whereas the live data does not have this. `table_headers_list.pop(0)` is used to remove the unneeded heading, commented out for the live version, in the line 24 in `itjobswatch_home_page_top_30.py`.
 
 - If we re-run the tests, `python -m pytest tests/ -v`, you will see that the failures have decreased from 5 to 4. With which we have turned out to be one more problem. We proceed to refactor and solve the next test problem.
+
+__Finally, going to resolve the last error, related with TestCSVGenerator and TestTop30HtmlReader:__
+
+The error looks like:
+
+![TDD_LIVE_LAST](./photos_tdd/test_live_last_error.png)
+
+As we can see, those 4 tests are still only about the csv having 100 entries instead of the 30 that it is expecting. That's all those 4 tests are saying with the `assert 100 == 30`.
+
+- To resolve this problem, we are going to display the top 30 in the csv file. We add [0:31] to the `itjobswatch_home_page_top_30.py` file, so it uses only the first 30 results. It looks like:
+
+![TDD_LIVE_UPDATED](./photos_tdd/test_live_done_last.png)
+
+- If we re-run the tests, `python -m pytest tests/ -v`, you will see that the failures have decreased from 4 to 0. All tests have been solved and passed successfully in the on-live environment.
+
+## Step 7: ALL TEST SHOULD NOW PASS!
+
+- Let's run all the tests in the on-live environment:
+
+`python -m pytest tests/ -v`
+
+The output is going to look like:
+
+![TDD_LIVE_DONE](./photos_tdd/test_live_done.png)
+
+Amazing job! We have managed to resolve all the errors to make sure that our application meets all the requirements when it is working live. We have run all the tests, we have seen that they have failed, we have proceeded to debug on pycharm as well as create prints to locate the errors, we have proceeded to correct the errors and run again, refactoring each one of them until all of them are resolved.
+
+We can see the great benefits of __TDD__, it has helped us to reduce the unexpected errors and the code becomes clearer and simple to understand. Ensures us to meet the requirements of our software.
+
+## Automation
+
+EXPLAIN THE NEW FILE -> AUTOMATION.PY
+
+## Boto3
+
+Boto3 is the name of the Python SDK for AWS. It allows you to directly create, update, and delete AWS resources from your Python scripts.
+
+![BOTO](./photos_tdd/boto3.png)
+
+EXPLAIN WHAT WE DID
