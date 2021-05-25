@@ -242,7 +242,10 @@ We can see the great benefits of __TDD__, it has helped us to reduce the unexpec
 
 ## Automation
 
-EXPLAIN THE NEW FILE -> AUTOMATION.PY
+Instead of running a command line to ask if we want to scrape data and create a .csv with or without headers, we can automate the process.
+- Communicated with Front End team to ask which they prefer
+- Created `automation.py` to generate the `.csv` without user input
+- The app still uses the `cmd_user_interface.py`, but on the backend the `automation.py` is used
 
 ## Boto3
 
@@ -250,4 +253,6 @@ Boto3 is the name of the Python SDK for AWS. It allows you to directly create, u
 
 ![BOTO](./photos_tdd/boto3.png)
 
-EXPLAIN WHAT WE DID
+- As part of `automation.py`, we want to send the generated `.csv` to a S3 bucket for the Front End team
+- A new function was added to use Boto3 to connect to the bucket and send the file
+- The Front End team can then use this to add to the site
